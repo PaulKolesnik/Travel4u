@@ -5,11 +5,14 @@
           <div class="card">
             <div class="card-header">Register</div>
             <div class="card-body">
-              <form role="form" >
+              <form role="form" [formGroup]="formRegister" (ngSubmit)="Submit()">
                 <div class="form-group row">
                   <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name</label>
                   <div class="col-md-6">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" formControlName="FullName">
+                    <span class="error" *ngIf="formRegister.get('FullName').invalid && formRegister.get('FullName').touched">
+                      Required
+                    </span>
                   </div>
                 </div>
   

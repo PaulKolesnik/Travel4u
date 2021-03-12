@@ -1,9 +1,8 @@
-.header {
-    color: white;
-    background-color: forestgreen;
-    font-size: x-large;
-    padding: 60px;
-}
-h1{
-    text-align: center;
+img {
+    background-color: #f7f3f3;
+    height: 350px;
+    width: 100%;
+    background-position: center;
+    background-size: 1000px;
+    background-repeat: no-repeat;
 }
