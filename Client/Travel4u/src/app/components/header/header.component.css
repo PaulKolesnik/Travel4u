@@ -1,8 +1,19 @@
 img {
-    background-color: #f7f3f3;
-    height: 350px;
-    width: 100%;
-    background-position: center;
-    background-size: 1000px;
-    background-repeat: no-repeat;
+  height: 25vh;
+  background-repeat: no-repeat;
+}
+
+.container-fluid {
+  background-color: darkorange;
+}
+
+p {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: larger;
+  color: white;
+}
+
+h1 {
+  font-family: 'Fredoka One', cursive;
+  font-family: 'Josefin Sans', sans-serif;
 }

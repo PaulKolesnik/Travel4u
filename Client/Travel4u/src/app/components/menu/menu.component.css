@@ -1,3 +1,16 @@
 .navbar {
-    background-color: #e3f2fd;
+  background-color: darkslategrey;
+  border-radius: 0 !important;
+  height: 7vh;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.navbar-brand {
+  color: white !important;
+}
+.nav>li>a:hover {
+    background-color: rgb(161, 90, 64) !important;
 }
