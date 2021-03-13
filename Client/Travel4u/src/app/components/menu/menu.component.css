@@ -1,7 +1,13 @@
 .navbar {
-  background-color: darkslategrey;
+  /* background-color: darkslategrey; */
+  background-color: rgb(49, 8, 75);
   border-radius: 0 !important;
   height: 7vh;
+}
+.nav>li>a:focus,
+.nav>li>a:hover {
+  text-decoration: none;
+  background-color: rgb(161, 90, 64) !important;
 }
 
 .nav-link {
@@ -11,6 +17,11 @@
 .navbar-brand {
   color: white !important;
 }
+
 .nav>li>a:hover {
-    background-color: rgb(161, 90, 64) !important;
+  background-color: rgb(161, 90, 64) !important;
+}
+
+img {
+  height: 91px;
 }

@@ -11,7 +11,7 @@ body{
 }
 
 .container-fluid{
-    height: 40vh;
+    height: 65vh;
 }
 
 .navbar-laravel
@@ -47,9 +47,10 @@ body{
     margin-left: 0;
     margin-right: 0;
 }
-.mat-radio-button ~ .mat-radio-button {
-  margin-left: 10px;
-}
+
 .error {
   color: red;
+}
+.card{
+    margin-block-start: 75px !important;
 }

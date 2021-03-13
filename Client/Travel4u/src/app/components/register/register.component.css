@@ -11,7 +11,7 @@ body {
 }
 
 .container-fluid {
-  height: 60vh;
+  height: 70vh;
 }
 
 img {
@@ -39,7 +39,9 @@ img {
   margin-left: 0;
   margin-right: 0;
 }
-
+.card{
+  margin-block-start: 75px !important;
+}
 
 .error {
   color: red;
