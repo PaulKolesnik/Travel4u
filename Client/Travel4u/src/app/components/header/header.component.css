@@ -4,13 +4,13 @@ img {
 }
 
 .container-fluid {
-  background-color: darkorange;
+  background-color: rgb(142, 248, 216);
 }
 
 p {
   font-family: 'Josefin Sans', sans-serif;
   font-size: larger;
-  color: white;
+  color: rgb(26, 25, 25);
 }
 
 h1 {
