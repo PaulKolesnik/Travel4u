@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "~11.2.3",
     "@angular/router": "~11.2.3",
     "@briebug/jest-schematic": "^3.1.0",
+    "@heroku-cli/plugin-buildpacks": "^7.47.13",
     "bootstrap": "^4.6.0",
     "enhanced-resolve": "^3.3.0",
     "heroku": "^7.50.0",
