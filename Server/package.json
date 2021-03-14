@@ -4,9 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon src/app.js",
+    "start": "node public/index.js",
+    "dev": "nodemon src/server.js",
     "test": "jest",
-    "lint": "eslint src/*.js --color"
+    "lint": "eslint src/*.js --color",
+    "build": "ng build",
+    "postinstall": "ng build --aot -prod"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +19,9 @@
     "nodemon": "^2.0.7"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "heroku": "^7.50.0"
   }
 }

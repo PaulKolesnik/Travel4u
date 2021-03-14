@@ -8,7 +8,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint src/*.ts --color",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +24,7 @@
     "@briebug/jest-schematic": "^3.1.0",
     "bootstrap": "^4.6.0",
     "enhanced-resolve": "^3.3.0",
+    "heroku": "^7.50.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
@@ -30,8 +32,8 @@
   "devDependencies": {
     "@angular-builders/jest": "11.1.1",
     "@angular-devkit/build-angular": "~0.1102.2",
-    "@angular/cli": "~11.2.2",
-    "@angular/compiler-cli": "~11.2.3",
+    "@angular/cli": "^11.2.4",
+    "@angular/compiler-cli": "^11.2.4",
     "@types/chai": "^4.2.15",
     "@types/jasmine": "~3.6.0",
     "@types/jest": "^26.0.20",
