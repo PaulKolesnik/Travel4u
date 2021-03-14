@@ -8,8 +8,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint src/*.ts --color",
-    "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -22,10 +21,8 @@
     "@angular/platform-browser-dynamic": "~11.2.3",
     "@angular/router": "~11.2.3",
     "@briebug/jest-schematic": "^3.1.0",
-    "@heroku-cli/plugin-buildpacks": "^7.47.13",
     "bootstrap": "^4.6.0",
     "enhanced-resolve": "^3.3.0",
-    "heroku": "^7.50.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
