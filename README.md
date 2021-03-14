@@ -15,6 +15,7 @@ This project is a project in the degree program in the 'Project Management' cour
 * NODEJS - version 14.16.0
 ## Setup
 To client setup 'touch Client/README.md'
+
 To server setup 'touch server/README.md'
 
 ## Status
