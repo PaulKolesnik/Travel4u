@@ -7,7 +7,7 @@
     "start": "node Server/src/server.js",
     "dev": "nodemon Server/src/server.js",
     "test": "jest",
-    "lint": "eslint src/*.js --color",
+    "lint": "eslint Server/src/*.js --color",
     "build": "ng build",
     "heroku-postbuild": "npm run build",
     "postinstall": "ng build --aot -prod"
@@ -17,7 +17,10 @@
   "devDependencies": {
     "eslint": "^7.22.0",
     "jest": "^26.6.3",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "@types/node": "^12.11.1",
+    "ts-node": "~8.3.0"
+
   },
   "dependencies": {
     "@heroku/buildpack-registry": "^1.0.1",
