@@ -8,15 +8,16 @@
 ## General info
 This project is a project in the degree program in the 'Project Management' course. In this project, we will build a vacation booking site in Israel and abroad.
 ## Technologies
-* HTML 5  CSS 3
-* TYPESCRIPT
-* ANGULAR - version 11.2.2
-* BOOTSTRAP - version 4.0.0
-* NODEJS - version 14.16.0
+* HTML5 
+* CSS3
+* TypeScript
+* ANGULAR - v11.2.2
+* BOOTSTRAP - v4.0.0
+* NODEJS - v14.16.0
 ## Setup
-To client setup 'touch Client/README.md'
+Client: 'touch Client/README.md'
 
-To server setup 'touch server/README.md'
+Server: 'touch server/README.md'
 
 ## Status
 Project is: _in progress_
