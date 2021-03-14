@@ -108,4 +108,5 @@ a:hover {
 .logo-part {
   border-right: 1px solid grey;
   height: 100%;
+  margin-block-start: 25px;
 }

@@ -12,9 +12,13 @@
             <div class="form-group row">
               <label for="user_name" class="col-md-4 col-form-label text-md-right">User Name</label>
               <div class="col-md-6">
-                <input type="text" class="form-control"  formControlName="userName">
-                <span class="error" *ngIf="formLogin.get('userName').invalid && formLogin.get('userName').touched">
+                <input type="text" class="form-control" formControlName="userName">
+                <span class="error" *ngIf="formLogin.get('userName').touched">
                   Required
+                </span>
+                <span class="error" *ngIf="formLogin.get('userName').invalid && formLogin.get('userName').touched">
+                  <br>
+                  Username must be between 4 and 10 characters long.
                 </span>
               </div>
             </div>
