@@ -15,9 +15,9 @@ This project is a project in the degree program in the 'Project Management' cour
 * BOOTSTRAP - v4.0.0
 * NODEJS - v14.16.0
 ## Setup
-Client: 'touch Client/README.md'
+Client: `touch Client/README.md`
 
-Server: 'touch server/README.md'
+Server: `touch server/README.md`
 
 ## Status
 Project is: _in progress_
