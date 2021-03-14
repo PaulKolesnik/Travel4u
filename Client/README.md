@@ -16,11 +16,11 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test` to execute the unit tests via [Jest](https://jestjs.io/docs).
 
-## Running end-to-end tests
+## Running Linter (eslint)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `npm run lint e2e` ESLint is a tool for identifying and reporting on patterns found via [eslint](https://eslint.org/docs/user-guide/getting-started).
 
 ## Further help
 
