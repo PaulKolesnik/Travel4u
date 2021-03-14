@@ -4,11 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node public/index.js",
-    "dev": "nodemon src/server.js",
+    "start": "node Server/src/server.js",
+    "dev": "nodemon Server/src/server.js",
     "test": "jest",
     "lint": "eslint src/*.js --color",
     "build": "ng build",
+    "heroku-postbuild": "npm run build",
     "postinstall": "ng build --aot -prod"
   },
   "author": "",

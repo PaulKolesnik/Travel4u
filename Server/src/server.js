@@ -6,7 +6,7 @@ const app = express(),
 const users = [];
 
 app.use(bodyParser.json());
-app.use(express.static(process.cwd()+"/public"));
+app.use(express.static(process.cwd()+"/Server/public"));
 
 app.get('/api/users', (req, res) => {
   res.json(users);
@@ -19,7 +19,7 @@ app.post('/api/user', (req, res) => {
 });
 
 app.get('/', (req,res) => {
-      res.sendFile(process.cwd()+ "/public/index.html")
+      res.sendFile(process.cwd()+ "/Server/public/index.html")
 });
 
 app.listen(port, () => {
