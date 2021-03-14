@@ -8,9 +8,7 @@
     "dev": "nodemon Server/src/server.js",
     "test": "jest",
     "lint": "eslint Server/src/*.js --color",
-    "build": "ng build",
-    "heroku-postbuild": "npm run build",
-    "postinstall": "ng build --aot -prod"
+    "heroku-postbuild": "npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -22,7 +20,6 @@
     "ts-node": "~8.3.0"
   },
   "dependencies": {
-    "@heroku-cli/plugin-buildpacks": "^7.47.13",
     "@heroku/buildpack-registry": "^1.0.1",
     "async-file": "^2.0.2",
     "body-parser": "^1.19.0",
@@ -30,7 +27,7 @@
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "got": "^9.6.0",
-    "heroku": "^7.50.0",
+    "heroku": "^7.2.0",
     "phoenix": "^1.5.8"
   }
 }
