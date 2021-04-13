@@ -18,7 +18,8 @@ import { RegisterComponent } from './components/register/register.component';
     MenuComponent,
     RegisterComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    
   ],
   imports: [
     BrowserModule,
