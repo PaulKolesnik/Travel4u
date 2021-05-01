@@ -33,9 +33,11 @@
     "express-flash": "^0.0.2",
     "express-session": "^1.17.1",
     "got": "^9.6.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.7",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "phoenix": "^1.5.8"
+    "phoenix": "^1.5.8",
+    "validator": "^13.6.0"
   }
 }

@@ -3,116 +3,122 @@
 const express = require('express');
 const router = new express.Router();
 const bcrypt = require('bcrypt');
-const passport = require('passport');
 // Load User model
+const auth = require('../config/auth');
 const User = require('../models/User');
-const {
-	forwardAuthenticated
-} = require('../config/auth');
 
-// Login Page
-router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
+router.get('/', async (req, res) => {
+	try {
+		const users = User.find();
 
-// Register Page
-//router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
-
-// Register
-router.post('/register', (req, res) => {
-	const {
-		name,
-		email,
-		password,
-		password2		
-	} = req.body;
-	console.log(req.body);
-	let errors = [];
-
-	if (!name || !email || !password) {
-		errors.push({
-			msg: 'Please enter all fields'
-		});
-	}
-
-	// if (password != password2) {
-	// 	errors.push({
-	// 		msg: 'Passwords do not match'
-	// 	});
-	// }
-
-	if (password.length < 6) {
-		errors.push({
-			msg: 'Password must be at least 6 characters'
-		});
-	}
-
-	if (errors.length > 0) {
-		res.render('register', {
-			errors,
-			name,
-			email,
-			password,
-			password2
-		});
-	} else {
-		User.findOne({
-			email: email
-		}).then(user => {
-			if (user) {
-				errors.push({
-					msg: 'Email already exists'
-				});
-				res.render('register', {
-					errors,
-					name,
-					email,
-					password,
-					password2
-				});
-			} else {
-				const newUser = new User({
-					name,
-					email,
-					password
-				});
-
-				bcrypt.genSalt(10, (err, salt) => {
-					bcrypt.hash(newUser.password, salt, (err, hash) => {
-						if (err) throw err;
-						newUser.password = hash;
-						newUser
-							.save()
-							.then(user => {
-								req.flash(
-									'success_msg',
-									'You are now registered and can log in'
-								);
-								console.log('user: ', newUser);
-								res.redirect('/users/login');
-							})
-							.catch(err => console.log(err));
-					});
-				});
-			}
-		});
+		res.send(users);
+	} catch (e) {
+		res.status(400).send(e);
 	}
 });
 
-router.post('/login', (req, res, next) => {
-	passport.authenticate('local', {
-		successRedirect: '/home',
-		failureRedirect: '/users/login',
-		failureFlash: true
-	})(req, res, next);
-	console.log(res.body);
+router.post('/register', async (req, res) => {
+	const user = new User(req.body);
+	try {
+		let errors = [];
+
+		if (!user.toObject().userName || !user.toObject().email || !user.toObject().password) {
+			errors.push({
+				msg: 'Please enter all fields'
+			});
+		}
+
+
+		if (user.password.length < 6) {
+			errors.push({
+				msg: 'Password must be at least 6 characters'
+			});
+		}
+
+		if (errors.length > 0) {
+			res.render('register', user);
+		} else {
+			await user.save();
+			const token = await user.generateAuthToken();
+			res.status(201).send({
+				user,
+				token
+			});
+
+		}
+	} catch (e) {
+		res.status(400).send(e);
+	}
 });
 
-// Logout
-router.get('/la', (req, res) => {
-	console.log('work');
 
-	req.logout();
-	req.flash('success_msg', 'You are logged out');
-	res.redirect('/users/login');
+router.post('/login', async (req, res) => {
+	try {
+		const user = await User.findByCredentials(req.body.userName, req.body.password);
+		const token = await user.generateAuthToken();
+		res.send({
+			user,
+			token
+		});
+	} catch (e) {
+		res.status(400).send();
+	}
+});
+
+router.post('/logout', auth, async (req, res) => {
+	try {
+		req.user.tokens = req.user.tokens.filter((token) => {
+			return token.token !== req.token;
+		});
+		await req.user.save();
+
+		res.send();
+	} catch (e) {
+		res.status(500).send();
+	}
+});
+
+router.post('/logoutAll', auth, async (req, res) => {
+	try {
+		req.user.tokens = [];
+		await req.user.save();
+		res.send();
+	} catch (e) {
+		res.status(500).send();
+	}
+});
+
+router.get('/me', auth, async (req, res) => {
+	res.send(req.user);
+});
+
+router.patch('/me', auth, async (req, res) => {
+	const updates = Object.keys(req.body);
+	const allowedUpdates = ['name', 'email', 'password', 'age'];
+	const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
+
+	if (!isValidOperation) {
+		return res.status(400).send({
+			error: 'Invalid updates!'
+		});
+	}
+
+	try {
+		updates.forEach((update) => req.user[update] = req.body[update]);
+		await req.user.save();
+		res.send(req.user);
+	} catch (e) {
+		res.status(400).send(e);
+	}
+});
+
+router.delete('/me', auth, async (req, res) => {
+	try {
+		await req.user.remove();
+		res.send(req.user);
+	} catch (e) {
+		res.status(500).send();
+	}
 });
 
 
