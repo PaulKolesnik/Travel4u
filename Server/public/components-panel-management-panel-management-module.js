@@ -1,5 +1,43 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["components-panel-management-panel-management-module"],{
 
+/***/ "As3A":
+/*!****************************************!*\
+  !*** ./src/app/helpers/admin.guard.ts ***!
+  \****************************************/
+/*! exports provided: AdminGuard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminGuard", function() { return AdminGuard; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "lGQG");
+
+
+
+class AdminGuard {
+    constructor(router, authService) {
+        this.router = router;
+        this.authService = authService;
+    }
+    canActivate(route, state) {
+        const currentUser = this.authService.currentUserValue;
+        if (currentUser.user.role == "Admin") {
+            // logged in with agent 
+            return true;
+        }
+        // not logged in so redirect to login page with the return url
+        this.router.navigate(['/not-found'], { queryParams: { returnUrl: state.url } });
+        return false;
+    }
+}
+AdminGuard.ɵfac = function AdminGuard_Factory(t) { return new (t || AdminGuard)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"])); };
+AdminGuard.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: AdminGuard, factory: AdminGuard.ɵfac, providedIn: 'root' });
+
+
+/***/ }),
+
 /***/ "EVdn":
 /*!********************************************!*\
   !*** ./node_modules/jquery/dist/jquery.js ***!
@@ -11060,10 +11098,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "portalChildrenRouts", function() { return portalChildrenRouts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PanelRoutingModule", function() { return PanelRoutingModule; });
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ "tyNb");
-/* harmony import */ var _panel_management_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./panel-management.component */ "a52f");
-/* harmony import */ var _reservations_reservations_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./reservations/reservations.component */ "Wn1E");
-/* harmony import */ var _users_users_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./users/users.component */ "w/HW");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var src_app_helpers_admin_guard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/helpers/admin.guard */ "As3A");
+/* harmony import */ var _panel_management_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./panel-management.component */ "a52f");
+/* harmony import */ var _reservations_reservations_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reservations/reservations.component */ "Wn1E");
+/* harmony import */ var _users_users_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./users/users.component */ "w/HW");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
 
 
 
@@ -11071,24 +11111,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const portalChildrenRouts = [
-    { path: 'reservations', component: _reservations_reservations_component__WEBPACK_IMPORTED_MODULE_2__["ReservationsComponent"] },
-    { path: 'users', component: _users_users_component__WEBPACK_IMPORTED_MODULE_3__["UsersComponent"] },
+    { path: 'users', component: _users_users_component__WEBPACK_IMPORTED_MODULE_4__["UsersComponent"], canActivate: [src_app_helpers_admin_guard__WEBPACK_IMPORTED_MODULE_1__["AdminGuard"]] },
+    { path: 'reservations', component: _reservations_reservations_component__WEBPACK_IMPORTED_MODULE_3__["ReservationsComponent"], canActivate: [src_app_helpers_admin_guard__WEBPACK_IMPORTED_MODULE_1__["AdminGuard"]] },
     {
-        path: '', component: _users_users_component__WEBPACK_IMPORTED_MODULE_3__["UsersComponent"]
+        path: '', component: _users_users_component__WEBPACK_IMPORTED_MODULE_4__["UsersComponent"]
     }
 ];
 const routes = [
     {
         path: '',
-        component: _panel_management_component__WEBPACK_IMPORTED_MODULE_1__["PanelManagementComponent"],
-        children: portalChildrenRouts
+        component: _panel_management_component__WEBPACK_IMPORTED_MODULE_2__["PanelManagementComponent"],
+        children: portalChildrenRouts,
     }
 ];
 class PanelRoutingModule {
 }
-PanelRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineNgModule"]({ type: PanelRoutingModule });
-PanelRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineInjector"]({ factory: function PanelRoutingModule_Factory(t) { return new (t || PanelRoutingModule)(); }, imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forChild(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵsetNgModuleScope"](PanelRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
+PanelRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineNgModule"]({ type: PanelRoutingModule });
+PanelRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineInjector"]({ factory: function PanelRoutingModule_Factory(t) { return new (t || PanelRoutingModule)(); }, imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forChild(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵsetNgModuleScope"](PanelRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
 
 
 /***/ }),
