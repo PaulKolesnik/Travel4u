@@ -29,6 +29,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(process.cwd() + "/server/public"));
 app.use(cors());
 app.use('/users', require('../routes/users.js'));
+app.use('/packages', require('../routes/package.js'));
+app.use('/orders', require('../routes/order.js'));
 
 
 app.get("/*", (req, res) => {
