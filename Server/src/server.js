@@ -4,7 +4,7 @@
 
 const express = require("express");
 const mongoose = require('mongoose');
-
+var cors = require('cors');
 const app = express(),
   bodyParser = require("body-parser");
   port = process.env.PORT || 3080;
@@ -27,7 +27,7 @@ mongoose
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(process.cwd() + "/server/public"));
-
+app.use(cors());
 app.use('/users', require('../routes/users.js'));
 
 
