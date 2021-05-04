@@ -5,7 +5,7 @@
         <div class="card-header">Login Page</div>
         <div class="card-body">
 
-          <form role="form" [formGroup]="formLogin" (ngSubmit)="Submit()">
+          <form role="form" [formGroup]="formLogin" (ngSubmit)="login()">
 
 
 
@@ -13,7 +13,7 @@
               <label for="user_name" class="col-md-4 col-form-label text-md-right">User Name</label>
               <div class="col-md-6">
                 <input type="text" class="form-control" formControlName="userName">
-                <span class="error" *ngIf="formLogin.get('userName').touched">
+                <span class="error" *ngIf="formLogin.get('userName').invalid && formLogin.get('userName').touched">
                   Required
                 </span>
                 <span class="error" *ngIf="formLogin.get('userName').invalid && formLogin.get('userName').touched">

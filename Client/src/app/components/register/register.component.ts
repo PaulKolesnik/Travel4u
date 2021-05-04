@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserModel } from 'src/app/models/userModel';
+import { AuthService } from 'src/app/services/auth.service';
+import { Notyf } from 'notyf';
 
 @Component({
   selector: 'app-register',
@@ -10,16 +14,48 @@ export class RegisterComponent implements OnInit {
   public formRegister: FormGroup = new FormGroup({
     FullName: new FormControl('', Validators.required),
     Email: new FormControl('', Validators.required),
-    UserName: new FormControl('',Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(10)])),
+    UserName: new FormControl('', Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(10)])),
     Password: new FormControl('', Validators.required),
     PhoneNumber: new FormControl('', Validators.required),
     BirthDate: new FormControl('', Validators.required)
   });
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {
+    // redirect to home if already logged in
+    if (this.authService.currentUserValue) {
+      this.router.navigate(['/home']);
+    }
+  }
+
 
   ngOnInit(): void {
   }
-  public Submit() { console.log(this.formRegister); }
+  get f() { return this.formRegister.value; }
+
+
+  public async register() {
+    var notyf = new Notyf({ duration: 4000, ripple: false });
+
+    console.log(this.formRegister);
+    // stop here if form is invalid
+    if (this.formRegister.invalid) {
+      return;
+    }
+    const user = new UserModel(this.f.Role, this.f.FullName, this.f.UserName, this.f.Password, this.f.BirthDate, this.f.Email, this.f.PhoneNumber)
+    const registerdUser = await this.authService.register(user).then( user => {
+      if(user){
+        notyf.success('Your have successfully registered!');
+        this.router.navigateByUrl['/login']
+      }
+      else {
+        notyf.error('Wrong details, try again!');
+      }
+    });
+   
+  }
 
 }
