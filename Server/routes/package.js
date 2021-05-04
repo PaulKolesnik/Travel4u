@@ -47,9 +47,9 @@ router.get('/this', auth, async (req, res) => {
 	res.send(req.Package);
 });
 
-router.delete('/this', auth, async (req, res) => {
+router.delete('/delete/:id', auth, async (req, res) => {
 	try {
-		await req.Package.remove();
+		await Package.findOneAndDelete({packageID: req.params.id});
 		res.send(req.Package);
 	} catch (e) {
 		res.status(500).send();

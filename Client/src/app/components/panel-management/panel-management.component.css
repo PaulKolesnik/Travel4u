@@ -48,3 +48,10 @@ body {
     margin-left: -15rem;
   }
 }
+
+
+
+.user {
+  color: red;
+  font-weight: bold;
+}

@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <h1 class="mt-1 modal-title">Packages</h1>
+  <a  routerLink="/panel/packages/new">
+    <span class="new-packge">Add New Packge</span>
+  </a>
+
+  <table class="table table-hover ">
+    <thead>
+      <tr>
+        <th scope="col">Package Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Location</th>
+        <th scope="col">Edit Quantity</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let package of packages">
+        <th scope="row">{{package.packageName}}</th>
+        <td>{{package.quantity}}</td>
+        <td>{{package.price}}</td>
+        <td>{{package.location}}</td>
+        <td>
+          <!-- <span class="material-icons">
+            trending_up
+          </span> -->
+          <counter-input [(ngModel)]="package.quantity" [counterRangeMax]="50" [counterRangeMin]="0"
+          [counterValue]="3"></counter-input>
+        </td>
+        <td routerLink="/panel/users/update/{{package.packageID}}">
+          <span class="material-icons">
+            upgrade
+          </span></td>
+        <td (click)="deletePackage(package.packageID)">
+          <span class="material-icons">
+            delete_forever
+          </span>
+        </td>
+      </tr>
+
+    </tbody>
+
+  </table>
+</div>

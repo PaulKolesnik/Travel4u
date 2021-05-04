@@ -4,6 +4,10 @@ import { PanelManagementComponent } from './panel-management.component';
 import { PanelRoutingModule } from './panel-management-routing.module';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { UsersComponent } from './users/users.component';
+import { ManagementPackagesComponent } from './management-packages/management-packages.component';
+import { NewPackageComponent } from './management-packages/new-package/new-package.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CounterInputComponent } from '../counter-input/counter-input.component';
 
 
 
@@ -11,11 +15,17 @@ import { UsersComponent } from './users/users.component';
   declarations: [
     PanelManagementComponent,
     ReservationsComponent,
-    UsersComponent
+    CounterInputComponent,
+    UsersComponent,
+    ManagementPackagesComponent,
+    NewPackageComponent,
+
   ],
   imports: [
     CommonModule,
-    PanelRoutingModule
+    ReactiveFormsModule,
+    FormsModule,
+    PanelRoutingModule,
   ]
 })
 export class PanelManagementModule { }

@@ -13,6 +13,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { LogoutComponent } from './components/logout/logout.component';
+import { PackagesItemComponent } from './components/packages/packages-item/packages-item.component';
+import { PackagesComponent } from './components/packages/packages.component';
+import { CounterInputComponent } from './components/counter-input/counter-input.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,9 @@ import { LogoutComponent } from './components/logout/logout.component';
     LoginComponent,
     PageNotFoundComponent,
     LogoutComponent,
-
+    PackagesItemComponent,
+    PackagesComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

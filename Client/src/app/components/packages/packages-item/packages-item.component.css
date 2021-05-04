@@ -1,0 +1,19 @@
+.header {
+  color: rgb(177, 22, 73);
+  font-size: large;
+  font-weight: bold;
+}
+
+.location {
+  color: rgb(108, 102, 116);
+}
+
+.packages-lefts {
+  color: red;
+  font-weight: bold;
+}
+
+P{
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-size: medium;
+}

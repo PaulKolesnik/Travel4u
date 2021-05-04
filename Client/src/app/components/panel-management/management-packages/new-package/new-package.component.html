@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row title">
+    <h3>Add New Package</h3>
+  </div>
+  <div class="box">
+    <form [formGroup]="packageForm" (ngSubmit)="onSubmit()">
+
+      <label><span>Package Name</span>
+        <input type="text" formControlName="packageName">
+        <span class="error" *ngIf="packageForm.get('packageName').invalid && packageForm.get('packageName').touched">
+          Required and Must Be between 5-50 letters
+        </span>
+      </label>
+
+      <label><span>Price</span>
+        <input type="number" formControlName="price">
+        <span class="error" *ngIf="packageForm.get('price').invalid && packageForm.get('price').touched">
+          Required and the price Must Be between 10-1000$
+        </span>
+      </label>
+
+      <label><span>Location</span>
+        <input type="text" formControlName="location">
+        <span class="error" *ngIf="packageForm.get('location').invalid && packageForm.get('location').touched">
+          Required
+        </span>
+      </label>
+
+      <span>Quantity </span>
+      <counter-input formControlName="quantity" [counterRangeMax]="maxValue" [counterRangeMin]="minValue"
+        [counterValue]="3"></counter-input>
+
+        
+      <label><span>Description</span>
+        <textarea rows="4" cols="50" formControlName="description"> </textarea>
+        <span class="error" *ngIf="packageForm.get('description').invalid && packageForm.get('description').touched">
+          Required and Description Must Be between 20-999
+        </span>
+      </label>
+
+      <br>
+      <button type="submit" class="btn btn-primary" [disabled]="!packageForm.valid">Add Package</button>
+    </form>
+  </div>
+</div>
