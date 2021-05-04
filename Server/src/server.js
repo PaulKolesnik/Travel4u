@@ -9,7 +9,7 @@ const app = express(),
   bodyParser = require("body-parser");
   port = process.env.PORT || 3080;
 
-const clientApp = express();
+const path = require('path');
 
 // DB Config
 const db = require('../config/keys').mongoURI;
@@ -34,7 +34,8 @@ app.use('/orders', require('../routes/order.js'));
 
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/../public/index.html");
+  //res.sendFile(__dirname + "/../public/index.html");
+  res.sendFile(path, {'root': './public/index.html'});
 });
 
 app.listen(port, () => {
