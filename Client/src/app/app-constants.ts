@@ -1,3 +1,4 @@
+import { environment } from "src/environments/environment.prod";
 
 export class AppConstants {
 
@@ -14,6 +15,6 @@ export class AppConstants {
   };
 
   static readonly systemSettings = {
-    baseDomain: 'http://localhost:3080'
+    baseDomain: environment.homeBaseUrl
   }
 }

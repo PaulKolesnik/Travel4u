@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  homeBaseUrl: "https://tavel4u.herokuapp.com",
 };
