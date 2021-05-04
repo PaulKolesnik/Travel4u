@@ -34,10 +34,8 @@ app.use('/orders', require('../routes/order.js'));
 
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "../public/index.html");
 });
-
-
 
 app.listen(port, () => {
   console.log(`Server listening on the localhost:${port}`);

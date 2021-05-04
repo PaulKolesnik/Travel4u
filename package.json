@@ -2,7 +2,7 @@
   "name": "travel4u",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server/src/server.js",
   "scripts": {
     "start": "node Server/src/server.js",
     "dev": "nodemon Server/src/server.js",

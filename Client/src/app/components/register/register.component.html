@@ -30,7 +30,7 @@
                   <label for="user_name" class="col-md-4 col-form-label text-md-right">User Name</label>
                   <div class="col-md-6">
                     <input type="text" class="form-control" formControlName="UserName" >
-                    <span class="error" *ngIf="formRegister.get('UserName').touched">
+                    <span class="error" *ngIf="formRegister.get('UserName').invalid && formRegister.get('UserName').touched">
                       Required
                     </span>
                     <span class="error" *ngIf="formRegister.get('UserName').invalid && formRegister.get('UserName').touched">
