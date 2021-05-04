@@ -28,16 +28,19 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(process.cwd() + "/server/public"));
 app.use(cors());
-app.use('/users', require('../routes/users.js'));
-app.use('/packages', require('../routes/package.js'));
-app.use('/orders', require('../routes/order.js'));
-
 
 app.get("/", (req, res) => {
   //res.sendFile(__dirname + "/../public/index.html");
   //res.sendFile(path, {root: '/public/index.html'});
   res.sendFile('index.html', {root: __dirname + '/../public'});
 });
+
+app.use('/users', require('../routes/users.js'));
+app.use('/packages', require('../routes/package.js'));
+app.use('/orders', require('../routes/order.js'));
+
+
+
 
 app.listen(port, () => {
   console.log(`Server listening on the localhost:${port}`);
