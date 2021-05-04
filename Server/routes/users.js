@@ -5,7 +5,7 @@ const router = new express.Router();
 const bcrypt = require('bcrypt');
 // Load User model
 const auth = require('../config/auth');
-const User = require('../models/User');
+const User = require('../models/user');
 
 router.get('/', async (req, res) => {
 	try {
