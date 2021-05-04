@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 var cors = require('cors');
 const app = express(),
   bodyParser = require("body-parser");
-  port = process.env.PORT || 27017;
+  port = process.env.PORT || 3080;
 
 const clientApp = express();
 
@@ -33,8 +33,8 @@ app.use('/packages', require('../routes/package.js'));
 app.use('/orders', require('../routes/order.js'));
 
 
-app.get("/*", (req, res) => {
-  res.sendFile(process.cwd() + "/server/public/index.html");
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
 });
 
 
