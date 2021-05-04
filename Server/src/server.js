@@ -35,7 +35,7 @@ app.use('/orders', require('../routes/order.js'));
 
 app.get("/", (req, res) => {
   //res.sendFile(__dirname + "/../public/index.html");
-  res.sendFile(path, {'root': './public/index.html'});
+  res.sendFile(path, {'root': '/public/index.html'});
 });
 
 app.listen(port, () => {
