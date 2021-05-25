@@ -27,6 +27,18 @@ const PackageSchema = new mongoose.Schema({
   description: {
     type: String,
     require: true
+  },
+  averageRatings: {
+    type: Number,
+    defult: 0
+  },
+  sumRating: {
+    type: Number,
+    defult: 0
+  },
+  numOfRates: {
+    type: Number,
+    defult: 0
   }
 });
 
