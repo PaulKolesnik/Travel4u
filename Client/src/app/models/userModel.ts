@@ -8,7 +8,7 @@ export class UserModel {
             public birthDate?: Date,
             public email?: string,
             public phoneNumber?: number,
-            public createdAt?: string,
+            public createdAt?: Date,
             public token?: string
       ) { }
 
@@ -16,4 +16,10 @@ export class UserModel {
 export class UserLoggedModel {
       user: UserModel;
       token: string;
+}
+
+export class RolesModel{
+      Admin: string;
+      Agent: string;
+      User: string;
 }

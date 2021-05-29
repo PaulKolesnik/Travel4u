@@ -15,6 +15,20 @@ export class PackagesService {
     this.systemSettings = AppConstants.systemSettings;
   }
 
+  public getOnePackage(id: number): Promise<PackageModel> {
+    return new Promise<PackageModel>((resolve, reject) => {
+      const apiAddress = this.systemSettings.baseDomain + '/packages';
+
+      this.http.get<PackageModel>(apiAddress + '/' + id)
+        .subscribe(
+          p => {
+            resolve(p);
+          }, err => {
+            reject(err);
+          });
+    });
+  }
+
   public async getAllPackages(): Promise<PackageModel[]> {
     try {
       const apiAddress = this.systemSettings.baseDomain + '/packages';

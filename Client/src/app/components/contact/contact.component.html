@@ -3,13 +3,18 @@
     <div class="row">
       <div class="col-md-8">
         <div class="well well-sm">
-          <form action="https://formspree.io/f/xzbydjal" method="POST">
+          <form role="form" [formGroup]="contactForm" (ngSubmit)="leaveMessage()">
+            <!-- <form action="https://formspree.io/f/xzbydjal" method="POST"> -->
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="name">
                     Name</label>
-                  <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+                  <input type="text" class="form-control" formControlName="name" id="name" placeholder="Enter name"
+                    required="required" />
+                  <span class="error" *ngIf="contactForm.get('name').invalid && contactForm.get('name').touched">
+                    Required
+                  </span>
                 </div>
                 <div class="form-group">
                   <label for="email">
@@ -17,17 +22,21 @@
                   <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
                     </span>
-                    <input type="email" name="_replyto" class="form-control" id="email" placeholder="Enter email" required="required" />
+                    <input type="email" formControlName="email" id="name" class="form-control" id="email"
+                      placeholder="Enter email" required="required" />
+                    <span class="error" *ngIf="contactForm.get('email').invalid && contactForm.get('email').touched">
+                      Required
+                    </span>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="subject">
                     Subject</label>
-                  <select id="subject" name="subject" class="form-control" required="required">
-                    <option value="na" selected="">Choose One:</option>
-                    <option value="service">Service</option>
-                    <option value="suggestions">Suggestions</option>
-                    <option value="product">Cancel Orders</option>
+                  <select formControlName="subject" class="form-control" required="required">
+                    <option [ngValue]="" disabled>Choose One:</option>
+                    <option [ngValue]="'service'">Service</option>
+                    <option [ngValue]="'suggestions'">Suggestions</option>
+                    <option [ngValue]="'Cancel Orders'">Cancel Orders</option>
                   </select>
                 </div>
               </div>
@@ -35,8 +44,11 @@
                 <div class="form-group">
                   <label for="name">
                     Message</label>
-                  <textarea name="message"  id="message" class="form-control" rows="9" cols="25" required="required"
+                  <textarea formControlName="message" class="form-control" rows="9" cols="25" required="required"
                     placeholder="Message"></textarea>
+                  <span class="error" *ngIf="contactForm.get('message').invalid && contactForm.get('message').touched">
+                    Required
+                  </span>
                 </div>
               </div>
               <div class="col-md-12">

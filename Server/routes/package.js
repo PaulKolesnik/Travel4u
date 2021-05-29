@@ -43,13 +43,32 @@ router.get('/', async (req, res) => {
 	}
 });
 
+router.get('/:id', async (req, res) => {
+	try {
+		await Package.find({
+			packageID: req.params.id
+		}, (err, result) => {
+			if (err) {
+				console.log(err);
+			} else {
+				res.json(result);
+			}
+		});
+		//res.send(packages);
+	} catch (e) {
+		res.status(400).send(e);
+	}
+});
+
 router.get('/this', auth, async (req, res) => {
 	res.send(req.Package);
 });
 
 router.delete('/delete/:id', auth, async (req, res) => {
 	try {
-		await Package.findOneAndDelete({packageID: req.params.id});
+		await Package.findOneAndDelete({
+			packageID: req.params.id
+		});
 		res.send(req.Package);
 	} catch (e) {
 		res.status(500).send();
