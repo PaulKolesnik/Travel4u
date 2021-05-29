@@ -1,37 +1,37 @@
-<!-- <div class="container-fluid">
+<div class="container-fluid">
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="gray" type="square-jelly-box" [fullScreen]="false">
+    <p style="color: white"> Loading... </p>
+  </ngx-spinner>
   <h1 class="mt-1 modal-title">Users</h1>
-
 
   <table class="table table-hover ">
     <thead>
       <tr>
-        <th scope="col">ID</th>
         <th scope="col">Full Name</th>
-        <th scope="col">UserName</th>
-        <th scope="col">BirthDate</th>
+        <th scope="col">Username</th>
+        <th scope="col">Email</th>
+        <th scope="col">Created Date</th>
         <th scope="col">Role</th>
-        <th scope="col">More Details</th>
         <th scope="col">Update</th>
         <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
-
-      <tr *ngFor="let user of packages">
-        <th scope="row">{{user.userID}}</th>
-        <td>{{user.fullName}}</td>
+      <tr *ngFor="let user of users">
+        <th scope="row">{{user.fullName}}</th>
         <td>{{user.userName}}</td>
-        <td>{{user.birthDate | date}}</td>
-        <td>{{user.userRole}}</td>
-        <td (click)="open(content, user.userID)">
-          <span class="material-icons">
-            trending_up
-          </span></td>
-        <td routerLink="/panel/users/update/{{user.userID}}">
+        <td>{{user.email}}</td>
+        <td>{{user.createdAt }}</td>
+        <td>{{user.role}}</td>
+        <!-- <td>
+          <counter-input [(ngModel)]="package.quantity" [counterRangeMax]="50" [counterRangeMin]="0" [counterValue]="3">
+          </counter-input>
+        </td> -->
+        <td routerLink="/panel/users/update/{{user._id}}">
           <span class="material-icons">
             upgrade
           </span></td>
-        <td (click)="deleteUser(user.userID)">
+        <td (click)="deletePackage(user._id)">
           <span class="material-icons">
             delete_forever
           </span>
@@ -41,4 +41,4 @@
     </tbody>
 
   </table>
-</div> -->
+</div>

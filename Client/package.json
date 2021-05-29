@@ -27,6 +27,8 @@
     "bootstrap": "^4.6.0",
     "enhanced-resolve": "^3.3.0",
     "jquery": "^3.6.0",
+    "moment": "^2.29.1",
+    "ngx-spinner": "^11.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

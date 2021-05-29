@@ -1,0 +1,48 @@
+.top {
+      padding-block-start: 20px;
+    }
+    
+    h1 {
+      color: goldenrod;
+    }
+    
+    .ng-select.custom {
+      border: 0px;
+      min-height: 0px;
+      border-radius: 0;
+      width: 70px;
+    }
+    
+    .material-icons {
+      padding-inline-start: 15px;
+    }
+    
+    img {
+      width: 280px;
+      height: auto;
+    }
+    
+    .new-packge {
+      font-weight: bolder !important;
+      text-decoration: underline;
+    }
+    
+    a:link {
+      color: blue;
+    }
+    
+    /* visited link */
+    a:visited {
+      color: green;
+    }
+    
+    /* mouse over link */
+    a:hover {
+      color: hotpink;
+    }
+    
+    /* selected link */
+    a:active {
+      color: blue;
+    }
+    

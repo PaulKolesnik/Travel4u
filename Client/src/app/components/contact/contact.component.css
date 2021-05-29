@@ -34,3 +34,7 @@ body {
 select {
   height: 100% !important;
 }
+
+.error {
+  color: red;
+}

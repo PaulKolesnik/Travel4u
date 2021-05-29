@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { PackageModel } from './models/package.model';
 import { PackagesService } from './packages.service';
 
@@ -10,7 +11,8 @@ import { PackagesService } from './packages.service';
 export class PackagesComponent implements OnInit {
   packages: PackageModel[];
   constructor(
-    private packagesService: PackagesService
+    private packagesService: PackagesService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
@@ -18,7 +20,11 @@ export class PackagesComponent implements OnInit {
   }
 
   public async getAllPackages() {
+    this.spinner.show();
+
     this.packages = await this.packagesService.getAllPackages();
+
+    this.spinner.hide();
   }
 
 

@@ -4,6 +4,7 @@ import { AdminGuard } from "src/app/helpers/admin.guard";
 import { AgentGuard } from "src/app/helpers/agent.guard";
 import { ManagementPackagesComponent } from "./management-packages/management-packages.component";
 import { NewPackageComponent } from "./management-packages/new-package/new-package.component";
+import { MessagesComponent } from "./messages/messages.component";
 import { PanelManagementComponent } from "./panel-management.component";
 import { ReservationsComponent } from "./reservations/reservations.component";
 import { UsersComponent } from "./users/users.component";
@@ -14,6 +15,7 @@ export const portalChildrenRouts: Route[] = [
       { path: 'packages/new', component: NewPackageComponent },
       //{ path: 'packages/update', component: NewPackageComponent },
       { path: 'reservations', component: ReservationsComponent, canActivate: [AdminGuard] },
+      { path: 'messages', component: MessagesComponent, canActivate: [AdminGuard] },
       {
             path: '', component: UsersComponent
       }

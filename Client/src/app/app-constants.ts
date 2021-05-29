@@ -1,4 +1,6 @@
-import { environment } from "src/environments/environment.prod";
+//import { environment } from "src/environments/environment.prod";
+
+import { environment } from "src/environments/environment";
 
 export class AppConstants {
 
@@ -16,5 +18,6 @@ export class AppConstants {
 
   static readonly systemSettings = {
     baseDomain: environment.homeBaseUrl
+    //baseDomain: environment.angularServ
   }
 }

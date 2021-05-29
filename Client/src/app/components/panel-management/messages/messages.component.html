@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="gray" type="square-jelly-box" [fullScreen]="false">
+    <p style="color: white"> Loading... </p>
+  </ngx-spinner>
+  <h1 class="mt-1 modal-title">Users Messages</h1>
+
+  <table class="table table-hover ">
+    <thead>
+      <tr>
+        <th scope="col">Contact Name</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Email</th>
+        <th scope="col">Send Date</th>
+        <th scope="col">Message</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let message of messages">
+        <th scope="row">{{message.name}}</th>
+        <td>{{message.subject}}</td>
+        <td>{{message.email}}</td>
+        <td>{{message.sendAt }}</td>
+        <td>{{message.message }}</td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+</div>

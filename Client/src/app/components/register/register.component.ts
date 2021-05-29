@@ -40,22 +40,23 @@ export class RegisterComponent implements OnInit {
   public async register() {
     var notyf = new Notyf({ duration: 4000, ripple: false });
 
-    console.log(this.formRegister);
     // stop here if form is invalid
     if (this.formRegister.invalid) {
       return;
     }
     const user = new UserModel(this.f.Role, this.f.FullName, this.f.UserName, this.f.Password, this.f.BirthDate, this.f.Email, this.f.PhoneNumber)
-    const registerdUser = await this.authService.register(user).then( user => {
-      if(user){
+    const registerdUser = await this.authService.register(user).then(user => {
+      if (user) {
         notyf.success('Your have successfully registered!');
-        this.router.navigateByUrl['/login']
+        return user;
       }
-      else {
-        notyf.error('Wrong details, try again!');
-      }
+      return;
     });
-   
+    if (!registerdUser)
+      notyf.error('Wrong details, try again!');
+    else
+      this.router.navigate['/login'];
+
   }
 
 }

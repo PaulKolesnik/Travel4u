@@ -42,9 +42,6 @@ export class NewPackageComponent implements OnInit {
     this.packages = await this.packagesService.getAllPackages();
   }
 
-  public async addNewPackage() {
-
-  }
   get f() { return this.packageForm.value; }
 
   async onSubmit() {

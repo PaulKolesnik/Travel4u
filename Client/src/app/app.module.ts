@@ -17,6 +17,8 @@ import { PackagesItemComponent } from './components/packages/packages-item/packa
 import { PackagesComponent } from './components/packages/packages.component';
 import { CounterInputComponent } from './components/counter-input/counter-input.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,9 +36,11 @@ import { ContactComponent } from './components/contact/contact.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

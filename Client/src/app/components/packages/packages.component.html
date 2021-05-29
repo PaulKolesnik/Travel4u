@@ -1,3 +1,6 @@
 <div class="container-fluid">
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="gray" type="square-jelly-box" [fullScreen]="false">
+    <p style="color: white"> Loading... </p>
+  </ngx-spinner>
   <app-packages-item *ngFor="let package of packages" [package]="package"></app-packages-item>
 </div>
