@@ -76,4 +76,55 @@ router.patch('/this', auth, async (req, res) => {
 	}
 });
 
+router.post('/Decrease-quantity', async (req, res) => {
+	const pkg = req.body
+	const q = pkg.quantity - 1
+	try {
+		await db.collection('packages').updateOne(
+			{ name: pkg.destination },
+			{
+				$set: {
+					quantity: q,
+				},
+			}
+		)
+		res.send({ message: `Thank you!` })
+	} catch (e) {
+		res.status(500).send(e)
+	}
+});
+
+router.get('/package-by-rating', async (req, res) => {
+	try {
+		const packages = await db
+			.collection('packages')
+			.find({ averageRatings: { $gt: '4' } })
+			.toArray()
+		res.send(JSON.stringify(packages))
+	} catch (e) {
+		res.status(500).send(e)
+	}
+});
+
+router.post('/update-rating', async (req, res) => {
+	const pkg = req.body
+	const rating = pkg.rating
+	const name = pkg.name
+	try {
+		await db.collection('packages').updateOne(
+			{ name: name },
+			{
+				$set: {
+					numOfRates: numOfRates+1,
+					sumRating: sumRating+ rating,
+					averageRatings: sumRating/numOfRates,
+				},
+			}
+		)
+		res.send({ message: `Thank you for rating this package!` })
+	} catch (e) {
+		res.status(500).send(e)
+	}
+});
+
 module.exports = router;
