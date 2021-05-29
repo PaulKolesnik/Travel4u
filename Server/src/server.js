@@ -41,6 +41,7 @@ app.get("/", (req, res) => {
   });
 });
 
+app.use('/message', require('../routes/message.js'));
 app.use('/users', require('../routes/users.js'));
 app.use('/packages', require('../routes/package.js'));
 app.use('/orders', require('../routes/order.js'));

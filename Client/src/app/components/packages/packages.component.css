@@ -11,5 +11,14 @@ body {
 }
 
 .container-fluid {
-  height: 65vh;
+  min-height: 65vh;
+  height: auto;
+}
+
+.title {
+  color: #212529;
+  font-size: xx-large;
+  font-weight: bold;
+  text-align: center;
+  margin-block-end: 10px;
 }

@@ -5,7 +5,7 @@ const router = new express.Router();
 const auth = require('../config/auth');
 const Order = require('../models/order');
 
-router.post('/new',async (req,res) => {
+router.post('/new', async (req,res) => {
     const newOrder = new Order(req.body);
     try{
         await newOrder.save();
@@ -15,14 +15,21 @@ router.post('/new',async (req,res) => {
 	}
 });
 
+
 router.get('/', async (req, res) => {
 	try {
-		const orders = Order.find();
-		res.send(orders);
+		const orders = await Order.find({}, (err, result) => {
+			if (err) {
+				console.log(err);
+			} else {
+				res.json(result);
+			}
+		});
 	} catch (e) {
 		res.status(400).send(e);
 	}
 });
+
 
 router.get('/this', auth, async (req, res) => {
 	res.send(req.Order);

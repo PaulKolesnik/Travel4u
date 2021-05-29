@@ -9,9 +9,14 @@ const User = require('../models/user');
 
 router.get('/', async (req, res) => {
 	try {
-		const users = User.find();
-
-		res.send(users);
+		await User.find({}, (err, result) =>{
+			if(err){
+				console.log("Error", err);
+			}
+			else{
+				res.json(result);
+			}
+		});
 	} catch (e) {
 		res.status(400).send(e);
 	}
@@ -112,14 +117,14 @@ router.patch('/me', auth, async (req, res) => {
 	}
 });
 
-router.delete('/me', auth, async (req, res) => {
+
+router.delete('/delete/:id', auth, async (req, res) => {
 	try {
-		await req.user.remove();
-		res.send(req.user);
+		const succses = await User.findOneAndDelete({_id: req.params.id});
+		res.status(200).send();
 	} catch (e) {
 		res.status(500).send();
 	}
 });
-
 
 module.exports = router;

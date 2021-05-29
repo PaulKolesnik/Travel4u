@@ -8,6 +8,8 @@ import { ManagementPackagesComponent } from './management-packages/management-pa
 import { NewPackageComponent } from './management-packages/new-package/new-package.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CounterInputComponent } from '../counter-input/counter-input.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { MessagesComponent } from './messages/messages.component';
 
 
 
@@ -19,6 +21,7 @@ import { CounterInputComponent } from '../counter-input/counter-input.component'
     UsersComponent,
     ManagementPackagesComponent,
     NewPackageComponent,
+    MessagesComponent,
 
   ],
   imports: [
@@ -26,6 +29,7 @@ import { CounterInputComponent } from '../counter-input/counter-input.component'
     ReactiveFormsModule,
     FormsModule,
     PanelRoutingModule,
+    NgxSpinnerModule
   ]
 })
 export class PanelManagementModule { }

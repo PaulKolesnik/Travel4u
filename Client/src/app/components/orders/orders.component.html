@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="gray" type="square-jelly-box" [fullScreen]="false">
+    <p style="color: white"> Loading... </p>
+  </ngx-spinner>
+
+  <div class="modal-header">
+    <span class="modal-title">Make Reservation</span><br>
+  </div>
+
+  <span class="modal-title">Package information</span>
+
+  <div class="modal-body">
+    <div class="row">
+      <div class="offset-2 col-4">
+        <span class="prop">Package Name:</span> {{package[0].packageName}}
+      </div>
+      <div class="col-6 ">
+        <span class="prop">Location:
+        </span> {{package[0].location}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="offset-2 col-4 top">
+        <span class="prop">Description:</span> {{package[0].description}}
+
+      </div>
+      <div class="col-4 top">
+        <span class="prop">Quantity:</span> {{package[0].quantity}}
+      </div>
+      <div class="col-2 top">
+        <span class="prop">Price:</span> {{package[0].price}}$
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn" (click)="makeReservation()">Make Order</button>
+    </div>
+  </div>

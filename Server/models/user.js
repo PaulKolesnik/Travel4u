@@ -12,6 +12,7 @@ const UserSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
     validate(value) {
       if (!validator.isEmail(value)) {
         throw new Error('Email is invalid');
@@ -20,6 +21,7 @@ const UserSchema = new mongoose.Schema({
   },
   userName: {
     type: String,
+    unique: true,
     required: true
   },
   password: {
