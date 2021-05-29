@@ -1,5 +1,43 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["components-panel-management-panel-management-module"],{
 
+/***/ "0qOC":
+/*!*********************************************!*\
+  !*** ./src/app/helpers/panel-auth.guard.ts ***!
+  \*********************************************/
+/*! exports provided: PanelAuthGuard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PanelAuthGuard", function() { return PanelAuthGuard; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "lGQG");
+
+
+
+class PanelAuthGuard {
+    constructor(router, authService) {
+        this.router = router;
+        this.authService = authService;
+    }
+    canActivate(route, state) {
+        const currentUser = this.authService.currentUserValue;
+        if (currentUser.user.role == "Admin" || currentUser.user.role == "Agent") {
+            // logged in 
+            return true;
+        }
+        // not logged in so redirect to login page with the return url
+        this.router.navigate(['/not-found'], { queryParams: { returnUrl: state.url } });
+        return false;
+    }
+}
+PanelAuthGuard.ɵfac = function PanelAuthGuard_Factory(t) { return new (t || PanelAuthGuard)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"])); };
+PanelAuthGuard.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: PanelAuthGuard, factory: PanelAuthGuard.ɵfac, providedIn: 'root' });
+
+
+/***/ }),
+
 /***/ "7gEz":
 /*!****************************************************************************!*\
   !*** ./src/app/components/panel-management/messages/messages.component.ts ***!
@@ -111,44 +149,6 @@ MessagesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](19);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx.messages);
     } }, directives: [ngx_spinner__WEBPACK_IMPORTED_MODULE_3__["NgxSpinnerComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"]], styles: [".top[_ngcontent-%COMP%] {\r\n      padding-block-start: 20px;\r\n    }\r\n    \r\n    h1[_ngcontent-%COMP%] {\r\n      color: goldenrod;\r\n    }\r\n    \r\n    .ng-select.custom[_ngcontent-%COMP%] {\r\n      border: 0px;\r\n      min-height: 0px;\r\n      border-radius: 0;\r\n      width: 70px;\r\n    }\r\n    \r\n    .material-icons[_ngcontent-%COMP%] {\r\n      padding-inline-start: 15px;\r\n    }\r\n    \r\n    img[_ngcontent-%COMP%] {\r\n      width: 280px;\r\n      height: auto;\r\n    }\r\n    \r\n    .new-packge[_ngcontent-%COMP%] {\r\n      font-weight: bolder !important;\r\n      text-decoration: underline;\r\n    }\r\n    \r\n    a[_ngcontent-%COMP%]:link {\r\n      color: blue;\r\n    }\r\n    \r\n    \r\n    \r\n    a[_ngcontent-%COMP%]:visited {\r\n      color: green;\r\n    }\r\n    \r\n    \r\n    \r\n    a[_ngcontent-%COMP%]:hover {\r\n      color: hotpink;\r\n    }\r\n    \r\n    \r\n    \r\n    a[_ngcontent-%COMP%]:active {\r\n      color: blue;\r\n    }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1lc3NhZ2VzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7TUFDTSx5QkFBeUI7SUFDM0I7O0lBRUE7TUFDRSxnQkFBZ0I7SUFDbEI7O0lBRUE7TUFDRSxXQUFXO01BQ1gsZUFBZTtNQUNmLGdCQUFnQjtNQUNoQixXQUFXO0lBQ2I7O0lBRUE7TUFDRSwwQkFBMEI7SUFDNUI7O0lBRUE7TUFDRSxZQUFZO01BQ1osWUFBWTtJQUNkOztJQUVBO01BQ0UsOEJBQThCO01BQzlCLDBCQUEwQjtJQUM1Qjs7SUFFQTtNQUNFLFdBQVc7SUFDYjs7SUFFQSxpQkFBaUI7O0lBQ2pCO01BQ0UsWUFBWTtJQUNkOztJQUVBLG9CQUFvQjs7SUFDcEI7TUFDRSxjQUFjO0lBQ2hCOztJQUVBLGtCQUFrQjs7SUFDbEI7TUFDRSxXQUFXO0lBQ2IiLCJmaWxlIjoibWVzc2FnZXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi50b3Age1xyXG4gICAgICBwYWRkaW5nLWJsb2NrLXN0YXJ0OiAyMHB4O1xyXG4gICAgfVxyXG4gICAgXHJcbiAgICBoMSB7XHJcbiAgICAgIGNvbG9yOiBnb2xkZW5yb2Q7XHJcbiAgICB9XHJcbiAgICBcclxuICAgIC5uZy1zZWxlY3QuY3VzdG9tIHtcclxuICAgICAgYm9yZGVyOiAwcHg7XHJcbiAgICAgIG1pbi1oZWlnaHQ6IDBweDtcclxuICAgICAgYm9yZGVyLXJhZGl1czogMDtcclxuICAgICAgd2lkdGg6IDcwcHg7XHJcbiAgICB9XHJcbiAgICBcclxuICAgIC5tYXRlcmlhbC1pY29ucyB7XHJcbiAgICAgIHBhZGRpbmctaW5saW5lLXN0YXJ0OiAxNXB4O1xyXG4gICAgfVxyXG4gICAgXHJcbiAgICBpbWcge1xyXG4gICAgICB3aWR0aDogMjgwcHg7XHJcbiAgICAgIGhlaWdodDogYXV0bztcclxuICAgIH1cclxuICAgIFxyXG4gICAgLm5ldy1wYWNrZ2Uge1xyXG4gICAgICBmb250LXdlaWdodDogYm9sZGVyICFpbXBvcnRhbnQ7XHJcbiAgICAgIHRleHQtZGVjb3JhdGlvbjogdW5kZXJsaW5lO1xyXG4gICAgfVxyXG4gICAgXHJcbiAgICBhOmxpbmsge1xyXG4gICAgICBjb2xvcjogYmx1ZTtcclxuICAgIH1cclxuICAgIFxyXG4gICAgLyogdmlzaXRlZCBsaW5rICovXHJcbiAgICBhOnZpc2l0ZWQge1xyXG4gICAgICBjb2xvcjogZ3JlZW47XHJcbiAgICB9XHJcbiAgICBcclxuICAgIC8qIG1vdXNlIG92ZXIgbGluayAqL1xyXG4gICAgYTpob3ZlciB7XHJcbiAgICAgIGNvbG9yOiBob3RwaW5rO1xyXG4gICAgfVxyXG4gICAgXHJcbiAgICAvKiBzZWxlY3RlZCBsaW5rICovXHJcbiAgICBhOmFjdGl2ZSB7XHJcbiAgICAgIGNvbG9yOiBibHVlO1xyXG4gICAgfVxyXG4gICAgIl19 */"] });
-
-
-/***/ }),
-
-/***/ "As3A":
-/*!****************************************!*\
-  !*** ./src/app/helpers/admin.guard.ts ***!
-  \****************************************/
-/*! exports provided: AdminGuard */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminGuard", function() { return AdminGuard; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "tyNb");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "lGQG");
-
-
-
-class AdminGuard {
-    constructor(router, authService) {
-        this.router = router;
-        this.authService = authService;
-    }
-    canActivate(route, state) {
-        const currentUser = this.authService.currentUserValue;
-        if (currentUser.user.role == "Admin") {
-            // logged in with agent 
-            return true;
-        }
-        // not logged in so redirect to login page with the return url
-        this.router.navigate(['/not-found'], { queryParams: { returnUrl: state.url } });
-        return false;
-    }
-}
-AdminGuard.ɵfac = function AdminGuard_Factory(t) { return new (t || AdminGuard)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"])); };
-AdminGuard.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: AdminGuard, factory: AdminGuard.ɵfac, providedIn: 'root' });
 
 
 /***/ }),
@@ -11673,7 +11673,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "portalChildrenRouts", function() { return portalChildrenRouts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PanelRoutingModule", function() { return PanelRoutingModule; });
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ "tyNb");
-/* harmony import */ var src_app_helpers_admin_guard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/helpers/admin.guard */ "As3A");
+/* harmony import */ var src_app_helpers_panel_auth_guard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/helpers/panel-auth.guard */ "0qOC");
 /* harmony import */ var _management_packages_management_packages_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./management-packages/management-packages.component */ "nMdM");
 /* harmony import */ var _management_packages_new_package_new_package_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./management-packages/new-package/new-package.component */ "ji5F");
 /* harmony import */ var _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./messages/messages.component */ "7gEz");
@@ -11692,14 +11692,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const portalChildrenRouts = [
-    { path: 'users', component: _users_users_component__WEBPACK_IMPORTED_MODULE_7__["UsersComponent"], canActivate: [src_app_helpers_admin_guard__WEBPACK_IMPORTED_MODULE_1__["AdminGuard"]] },
-    { path: 'packages', component: _management_packages_management_packages_component__WEBPACK_IMPORTED_MODULE_2__["ManagementPackagesComponent"] },
-    { path: 'packages/new', component: _management_packages_new_package_new_package_component__WEBPACK_IMPORTED_MODULE_3__["NewPackageComponent"] },
+    { path: 'users', component: _users_users_component__WEBPACK_IMPORTED_MODULE_7__["UsersComponent"], canActivate: [src_app_helpers_panel_auth_guard__WEBPACK_IMPORTED_MODULE_1__["PanelAuthGuard"]] },
+    { path: 'packages', component: _management_packages_management_packages_component__WEBPACK_IMPORTED_MODULE_2__["ManagementPackagesComponent"], canActivate: [src_app_helpers_panel_auth_guard__WEBPACK_IMPORTED_MODULE_1__["PanelAuthGuard"]] },
+    { path: 'packages/new', component: _management_packages_new_package_new_package_component__WEBPACK_IMPORTED_MODULE_3__["NewPackageComponent"], canActivate: [src_app_helpers_panel_auth_guard__WEBPACK_IMPORTED_MODULE_1__["PanelAuthGuard"]] },
     //{ path: 'packages/update', component: NewPackageComponent },
-    { path: 'reservations', component: _reservations_reservations_component__WEBPACK_IMPORTED_MODULE_6__["ReservationsComponent"], canActivate: [src_app_helpers_admin_guard__WEBPACK_IMPORTED_MODULE_1__["AdminGuard"]] },
-    { path: 'messages', component: _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__["MessagesComponent"], canActivate: [src_app_helpers_admin_guard__WEBPACK_IMPORTED_MODULE_1__["AdminGuard"]] },
+    { path: 'reservations', component: _reservations_reservations_component__WEBPACK_IMPORTED_MODULE_6__["ReservationsComponent"], canActivate: [src_app_helpers_panel_auth_guard__WEBPACK_IMPORTED_MODULE_1__["PanelAuthGuard"]] },
+    { path: 'messages', component: _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__["MessagesComponent"], canActivate: [src_app_helpers_panel_auth_guard__WEBPACK_IMPORTED_MODULE_1__["PanelAuthGuard"]] },
     {
-        path: '', component: _users_users_component__WEBPACK_IMPORTED_MODULE_7__["UsersComponent"]
+        path: '', component: _users_users_component__WEBPACK_IMPORTED_MODULE_7__["UsersComponent"], canActivate: [src_app_helpers_panel_auth_guard__WEBPACK_IMPORTED_MODULE_1__["PanelAuthGuard"]]
     }
 ];
 const routes = [

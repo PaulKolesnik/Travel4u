@@ -8,7 +8,7 @@ const OrderSchema = new mongoose.Schema({
     unique: true,
     index: true
   },
-  package: {
+  packagee: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: 'Package'
@@ -24,7 +24,7 @@ const OrderSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    required: true
+    default: Date.now
   },
   status: {
     type: String,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PackageModel } from './models/package.model';
 import { PackagesService } from './packages.service';
@@ -12,7 +13,8 @@ export class PackagesComponent implements OnInit {
   packages: PackageModel[];
   constructor(
     private packagesService: PackagesService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -27,5 +29,8 @@ export class PackagesComponent implements OnInit {
     this.spinner.hide();
   }
 
-
+  makeOrder(p: PackageModel) {
+    this.router.navigateByUrl('/order/' + p.packageID);
+  }
+ 
 }

@@ -19,6 +19,7 @@ import { CounterInputComponent } from './components/counter-input/counter-input.
 import { ContactComponent } from './components/contact/contact.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PackagesItemComponent,
     PackagesComponent,
     ContactComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,
