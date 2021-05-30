@@ -1,1 +1,47 @@
-<p>reservations works!</p>
+<div class="container-fluid">
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="gray" type="square-jelly-box" [fullScreen]="false">
+    <p style="color: white"> Loading... </p>
+  </ngx-spinner>
+  <h1 class="mt-1 modal-title">Reservations</h1>
+
+  <table class="table table-hover ">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Package ID</th>
+        <th scope="col">Total Price</th>
+        <th scope="col">Customer ID</th>
+        <th scope="col">Date</th>
+        <th scope="col">Status</th>
+        <th scope="col">Confirm (Click to Approve)</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of reservations">
+        <th scope="row">{{r.orderID}}</th>
+        <td>{{r.packagee}}</td>
+        <td>{{r.totalPrice}}$</td>
+        <td>{{r.customer}}</td>
+        <td>
+          {{r.date}}
+        </td>
+        <td>
+          {{r.status}}
+        </td>
+        <td (click)="confirmReservations(r)">
+          <span class="material-icons">
+            done
+          </span>
+        </td>
+        <td (click)="deleteReservations(r)">
+          <span class="material-icons">
+            delete_forever
+          </span>
+        </td>
+      </tr>
+
+    </tbody>
+
+  </table>
+</div>

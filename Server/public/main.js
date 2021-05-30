@@ -609,7 +609,7 @@ AuthGuard.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjecta
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppConstants", function() { return AppConstants; });
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ "AytR");
+/* harmony import */ var src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment.prod */ "cxbk");
 //import { environment } from "src/environments/environment.prod";
 
 class AppConstants {
@@ -626,7 +626,7 @@ AppConstants.appRoutes = {
     portal: 'portal',
 };
 AppConstants.systemSettings = {
-    baseDomain: src_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].homeBaseUrl
+    baseDomain: src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__["environment"].homeBaseUrl
     //baseDomain: environment.angularServ
 };
 
@@ -856,13 +856,14 @@ ContactComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineC
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReservationModel", function() { return ReservationModel; });
 class ReservationModel {
-    constructor(orderID, packagee, totalPrice, customer, status, date) {
+    constructor(orderID, packagee, totalPrice, customer, status, date, _id) {
         this.orderID = orderID;
         this.packagee = packagee;
         this.totalPrice = totalPrice;
         this.customer = customer;
         this.status = status;
         this.date = date;
+        this._id = _id;
     }
 }
 
@@ -1892,6 +1893,24 @@ LogoutComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineCo
 
 /***/ }),
 
+/***/ "cxbk":
+/*!**********************************************!*\
+  !*** ./src/environments/environment.prod.ts ***!
+  \**********************************************/
+/*! exports provided: environment */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
+const environment = {
+    production: true,
+    homeBaseUrl: "https://tavel4u.herokuapp.com",
+};
+
+
+/***/ }),
+
 /***/ "eMGG":
 /*!********************************************!*\
   !*** ./src/app/helpers/jwt.interceptor.ts ***!
@@ -2127,6 +2146,10 @@ class AuthService {
                 resolve(true);
             }, err => reject(err));
         });
+    }
+    getUserByID(objID) {
+        const apiAddress = this.systemSettings.baseDomain + '/users';
+        return this.http.get(apiAddress + '/' + objID).toPromise();
     }
 }
 AuthService.ɵfac = function AuthService_Factory(t) { return new (t || AuthService)(_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵinject"](_dates_service__WEBPACK_IMPORTED_MODULE_6__["DatesService"])); };
@@ -2447,6 +2470,14 @@ class OrdersService {
             catch (e) {
                 console.log(e);
             }
+        });
+    }
+    approveReservation(id, updatedReservation) {
+        return new Promise((resolve, reject) => {
+            const apiAddress = this.systemSettings.baseDomain + '/orders/approve/' + id;
+            this.http.patch(apiAddress, updatedReservation).subscribe(() => {
+                resolve(true);
+            }, err => reject(err));
         });
     }
     deleteReservation(id) {

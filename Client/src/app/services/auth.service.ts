@@ -57,6 +57,7 @@ export class AuthService {
       console.log(e);
     }
   }
+
   public async logout() {
     try {
       const apiAddress = this.systemSettings.baseDomain + '/users/logout';
@@ -108,6 +109,14 @@ export class AuthService {
           resolve(true);
         }, err => reject(err));
     });
+  }
+
+
+  public getUserByID(objID): Promise<UserModel> {
+    const apiAddress = this.systemSettings.baseDomain + '/users';
+
+    return this.http.get<UserModel>(apiAddress + '/' + objID).toPromise();
+
   }
 
 }

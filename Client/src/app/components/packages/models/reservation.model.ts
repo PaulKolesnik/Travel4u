@@ -9,6 +9,7 @@ export class ReservationModel {
             public totalPrice: number,
             public customer: UserModel,
             public status: string,
-            public date?: Date
+            public date?: Date,
+            public _id?,
       ) { }
 }
