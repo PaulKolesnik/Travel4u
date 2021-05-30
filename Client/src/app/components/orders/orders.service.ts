@@ -20,7 +20,7 @@ export class OrdersService {
             try {
                   const apiAddress = this.systemSettings.baseDomain + '/orders';
 
-                  const orders= await this.http.get<ReservationModel[]>(apiAddress).toPromise();
+                  const orders = await this.http.get<ReservationModel[]>(apiAddress).toPromise();
 
                   return orders;
             } catch (e) {
@@ -38,6 +38,17 @@ export class OrdersService {
                   console.log(e);
             }
       }
+
+      public approveReservation(id: number, updatedReservation: ReservationModel): Promise<boolean> {
+            return new Promise((resolve, reject) => {
+                  const apiAddress = this.systemSettings.baseDomain + '/orders/approve/' + id;
+
+                  this.http.patch<ReservationModel>(apiAddress, updatedReservation).subscribe(() => {
+                        resolve(true);
+                  }, err => reject(err));
+            });
+      }
+
 
       public deleteReservation(id: number): Promise<boolean> {
             return new Promise((resolve, reject) => {

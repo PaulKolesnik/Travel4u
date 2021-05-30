@@ -9,11 +9,10 @@ const User = require('../models/user');
 
 router.get('/', async (req, res) => {
 	try {
-		await User.find({}, (err, result) =>{
-			if(err){
+		await User.find({}, (err, result) => {
+			if (err) {
 				console.log("Error", err);
-			}
-			else{
+			} else {
 				res.json(result);
 			}
 		});
@@ -117,10 +116,28 @@ router.patch('/me', auth, async (req, res) => {
 	}
 });
 
+router.get('/:id', async (req, res) => {
+	try {
+		await User.find({
+			_id: req.params.id
+		}, (err, result) => {
+			if (err) {
+				console.log(err);
+			} else {
+				res.json(result);
+			}
+		});
+	} catch (e) {
+		res.status(400).send(e);
+	}
+});
+
 
 router.delete('/delete/:id', auth, async (req, res) => {
 	try {
-		const succses = await User.findOneAndDelete({_id: req.params.id});
+		const succses = await User.findOneAndDelete({
+			_id: req.params.id
+		});
 		res.status(200).send();
 	} catch (e) {
 		res.status(500).send();
